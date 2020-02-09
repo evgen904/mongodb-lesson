@@ -28,11 +28,44 @@ const person = new Person({
   phones: [654654654]
 })
 
+// https://mongoosejs.com/docs/queries.html
+// получаем данные
+// find({age: 24, name: 'Test text'})
+// find({name: {'$in': ['Person 1', 'Person 2', 'Person 3']}})
+// .sort('-age') - в обратном порядке
+// .limit(2) - лимитировать показ
+Person
+    .find({name: {'$in': ['Person 1', 'Person 2', 'Person 3']}})
+    .limit(2)
+    .sort('-age')
+    .then(persons => {
+      console.log(JSON.stringify(persons, null, 2));
+    }).catch((e) => {
+      console.log(e);
+    })
+
 // сохраняем модель в базу
-person.save()
-    .then((user) => {
-      console.log(user)
-    })
-    .catch(e => {
-      console.log(e)
-    })
+// person.save()
+//     .then((user) => {
+//       console.log(user)
+//     })
+//     .catch(e => {
+//       console.log(e)
+//     });
+
+// [
+//   {
+//     name: 'Person 1',
+//     age: 50
+//   },
+//   {
+//     name: 'Person 2',
+//     age: 70
+//   },
+//   {
+//     name: 'Person 3',
+//     age: 30
+//   }
+// ].forEach(person => {
+//   new Person(person).save()
+// })
