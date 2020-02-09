@@ -35,11 +35,14 @@ const person = new Person({
 // .sort('-age') - в обратном порядке
 // .limit(2) - лимитировать показ
 Person
-    .find({name: {'$in': ['Person 1', 'Person 2', 'Person 3']}})
-    .limit(2)
-    .sort('-age')
+    .find({name: 'Test text'})
     .then(persons => {
       console.log(JSON.stringify(persons, null, 2));
+
+      // удаление
+      //const p = persons[0]
+      //Person.find({_id: p._id}).remove().then(_ => { console.log('Removed'); }).catch(e => console.log(e))
+
     }).catch((e) => {
       console.log(e);
     })
